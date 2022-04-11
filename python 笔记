@@ -1,0 +1,433 @@
+Python
+input()                   输入的都是字符串
+int(a)                    将a（str）转换成a（int） ---临时
+a=int(input("请输入"))     在输入时就转化成int
+
+if 条件：                  条件为真执行结果
+	结果                   四个空号或者一个缩进（Tab）
+                           同一个缩进相当于在一行，python不依靠{}而是靠缩进来判断是否同时执行
+if 条件：
+	结果
+else：                      ----双分支
+	结果2
+
+
+
+if 条件1：
+	结果1
+elif 条件2：
+	结果2                    -----多分枝
+elif 条件3：
+	结果3
+else:
+	结果4
+
+
+if 条件1：
+	if 条件2：               if的嵌套
+		结果1
+	else：                    
+		结果2                 如果没想好写啥可用pass替代防止报错
+else：
+	结果3
+
+
+while 条件：
+	循环体
+
+
+break和continue
+break立即停止循环并退出循环
+continue 立刻停止当前循环，进行下一轮循环
+
+
+print（“你好”，“嘿嘿”，“哈哈哈”）
+-----你好 嘿嘿 哈哈哈
+print（“嘿嘿”+name）                字符串的拼接
+ 
+
+字符串的格式化（老）
+s="""------of %s-------
+name : %s
+age  : %s
+------------------------
+"""%(a,b,c)
+print(s)
+%s 表示占位，稍后会填充（任意内容）
+%d 表示占位，（整数digit）
+%f 表示占位  （float型）
+%.2f 表示占位，且小数保留两位
+
+
+字符串的格式化（新） python 3.5以上
+f-string 
+name=”哈哈哈“
+addr=”水坑“
+hobby=”打人“
+print（f”我叫{name}，我喜欢在{addr}做{hobby}“）
+
+
+
+运算符
+a/b    计算整除
+a//b   计算商
+a%b    计算余数
+a**4   计算次幂
+
+
+编码
+字符串转化成字节
+s=bs.decode("gbk")          将bs解码，且赋给s
+s=bs.encode("gbk")          将bs编码，且赋给s
+
+
+字符串                              类比字符数组
+1.索引
+	索引下标，下标从0开始          
+	s=“我喜欢你”
+	s1=s【1】          s1=喜
+	s2=s[-1]         s2=你
+
+
+2.切片
+	用下标来截取部分字符串的内容    str【a：b】  从a取到b，但a取，b不取
+	s="我最喜欢python了"
+	s1=s[1:3]       s1=最喜
+	s2=s[1:]        s2=最喜欢python了   从一开始取到末尾
+	s3=s[:3]        s3=我最喜           从一开始取到3
+    s4=s[:]         s4=我最喜欢python了  全取
+
+
+    若有string=“abcdefg”
+    要倒着取
+    s5=string[5:1:-1]       s5=fedc  
+    s6=string【1：5：2】      s6=bd     从b取到e，步长为2，每二取一
+
+
+    总结：
+    语法：                     start:起始位置   end：结束位置
+    s[start:end:step]          step：步长      取头不取尾
+
+
+字符串操作：
+1.大小写：
+	s="i am sylar"
+	s1=s.capitalize()              首字母变成大写
+	s2=s.lower()                   全变成小写 有个别语言难以识别，用casefold（）
+	s3=s.upper()                   全变成大写  常用于忽略大小写
+	s4=s.swapcase()                大小写相互转化
+	s5=s.title()                   每个单词的首字母变成大写
+
+2.切来切去
+	s="sylar"
+	s1=s.center(10)            将字符拉长成10位
+    s1=s.center(10，"*")       将字符拉长成10位，用*号填充空白
+    s2=s.strip()               去掉字符串左右两端的空白（空格，\t、\n 、转义符
+         strip（“sb”）          去掉字符两边的sb
+    s3=s.replace("a","b")       字符串替换    用b替换a   可用来除去一句好话里的空格
+    lst=s.split("*")             用*去切割，得到一个列表
+
+    join（）   把列表组合成一个字符串
+    lst=['哈','和','嘿']
+    s="*".join(lst)            s=哈*和*嘿
+
+3.格式化输出
+	name="sylar"
+	age=18
+	s="我叫%s，我今年%d岁了"%（name,age）       老方法
+	s=f"我叫{name}，我今年{age}岁了”          3.5以上新方法
+
+4.查找
+	s.startswith（"*****"）          判断字符串是不是以什么开头
+	s.endswith（"******"）            判断字符串是不是以什么结尾
+     s.count("*")                      计数
+     s.find("*")                      查找，找到1，找不到-1
+     s.index("*")                     查找，返回索引，找不到报错
+
+5.条件判断
+	 s.isdigit()                 判断是不是整数构成的
+	 s.isdecimal()               判断是不是小数构成的
+	 s.isnumeric()               判断是不是数字（能识别中文数字）
+
+6.查看str源代码，通过源代码来知道新的字符串操作
+	str    按住ctrl 点击他
+	print（dir(str))          查看字符串的所有操作
+
+7.计算字符串长度
+	
+	a=len(s)    上来可直接用，是内联函数
+
+8.迭代
+	while for      循环
+
+	in {      在for中是把每一个元素获取到赋值给前面的变量
+	        不在for中，判断xx是否出现在str中
+	        例：  print('VEU'in s) 判断VUE在不在字符串s中
+
+总结：
+	1.  upper()          把字符串全都转化为大写    用于忽略大小写
+	2.  strip()          去掉左右两端的空白、字符？
+	3.  replace()        字符串替换
+	4.  split()          把字符串切割，得到列表
+	5.  join()           把列表组成字符串
+	6.  startswith()     判断是不是以xxx开头
+	7.  find()           查找xxx
+	8.  count()          计数
+	9.  isdigit()        判断字符串是否由数字组成
+	10. len()            求字符串长度
+	
+
+
+列表（list）
+1.增加
+		list.append("*")       追加数据
+		list.insert(1,"*")     在1位置处插入*，后面元素都往后排一位
+		list.entend(n)          在后面追加一个你列表
+2.删除
+		list.remove("*")      删除*
+		list.pop(1)            删除1号位并返回删除的元素
+		del list[2]           删除2号
+		list.clear()         全删
+3.修改
+
+
+4.查询
+		1.用for循环查询
+	     		for i in range(0，10)  从0数到9（n-1）
+	     		for i in range(0，10，2)  0 2 4 6 8
+	               for i in range(len(list))
+	               		item=list[i]
+	               		if item.startswith("*")    判断首字母是不是*
+	               				list[i]="%"     修改
+5.其他操作
+		list.reverse()     反转
+		list.sort()        排序，默认升序
+		list.sort(reverse=Ture)   排序，降序
+		
+
+
+
+元组 tuple类型
+t=("你好"，"他好","我好")     和列表差不多，但不能修改
+  小括号表示
+
+
+字典
+1.语法：
+	{key1:value1,ke2:value2.....}
+	key必须是不可变的（可哈希）的 value是可用任意类型的数据
+	key：int,str,tuple,bool
+	不可key：list,dict,set
+ 	d=("s":"ss")
+	print(d["s"])	
+
+1.添加
+	d[new key]=value
+	d.setdefault(new key,value)       新增完会返回新增的value
+
+2.修改
+	d[old key]=new value
+
+3.删除
+	d.pop(old key)    同时返回value
+	del d[old key]    不返回value
+
+4.查询
+	d[key]          不存在会报错
+	d.get(key)      不存在会返回None
+
+ 字典的for循环
+ 1.直接for
+ 	for k in d:
+ 		print(k)
+ 		print(d[k])
+ 2.拿到所有value
+ 	for v in d.values():
+ 		print(v)
+ 3.解构/解包
+
+
+
+ set集合
+ 1.去重
+ s={"hh","hh","h"}
+print(s)          结果为{'hh','h'}     去除重复的数据
+2.交并差
+a={"1","2","3"}
+b={"1","3","5"}
+c={"2","4","6"}
+交集：
+print（a&b）     {"1","3"}
+并集
+print（a|b）     {"1","2","3","5"}
+差集
+print（a-b）     {"2"}         a有 b没有
+
+创建set集合：
+s=set()  
+s.add("*")        增加     
+s.remove("*")     删除
+修改=先删除，再增加
+
+
+对列表的条件删除
+1.把要删除的内容写在一个新列表中，循环新列表，删除老列表
+2.for name in lst[:]:        循环遍历，且实现了浅拷贝，即新建了一个新列表
+		lst.remove(name)    
+
+字典的删除
+dic={"jay":"周杰","55k":"卢本伟"}
+1.不可以在循环的时候删除字典内容
+2.把要删除的内容记录在列表中，循环列表，删除字典
+lst=list(dic.keys())
+for k in lst:
+		dic.pop(k)
+
+
+==和is
+==判断两个值是否相等
+is判断两个内存地址是否一致
+一般使用is来判断是否空
+例：
+	c=None
+	if c is None
+	......
+	else
+	.....
+
+
+while和else
+while 条件：
+		if 条件2：
+				break
+		········
+		········
+else：
+		········
+如果执行到break，就不执行else
+如果从头到位每执行过break，最后会执行else
+
+
+
+文件操作
+1.打开
+		f=open("文件路径",mode="?",encoding="utf-8")
+		f被称为文件句柄，文件路径可用绝对路径和相对路径，mode是模式
+../      退出一层
+/a       进入文件夹a
+
+2.读取
+		f.read()     默认读取全部内容
+
+r  w   a
+模式：
+	1.r：read   只读模式
+			1.read()    全读取
+			2.readline  一次只读一行
+			3. for循环  ----重点
+		列子：
+		for line in f:            每次循环读取一行
+				print(line.strip())   读取时去掉换行
+	
+	2.w：write 只写模式，重新创建文件
+	f.write("hhhhh")  将hhhh写入
+
+	3.a：append 追加写 不会重新创建，但如果没有，会创建心动新的
+
+	4.b：bytes 二进制 一般处理非文本文件，不能指定coding
+	rb 读取字节
+	wb 写入字节
+
+	5.+：扩展
+	r+，w+，a+，r+b，w+b，      //少用！会报一些奇怪的错
+
+	关闭
+	1.f.close
+	2.with open("~~~~~~~~~~~~~~~~")		
+					shdkfhfsdkf h
+					sdflkhsfl
+
+		with 会自动在末尾加上colse
+
+
+文件修改操作
+1.读取文件中内容
+把要修改的内容进行修改
+把新内容写到一个副本文件中
+
+借助os模块
+把原来的文件删除掉
+把新文件重命名成原来的文件名
+
+
+列：
+
+import os
+
+with open("f.txt",mode="r",encoding="utf-8")
+		 open("f_副本.txt",mode="w",encoding="utf-8")
+		 for line in f1:
+		 			if "人" in line :
+		 					line=line.replace("人","狗")
+		 			f2.write(line)
+os.remove("f.txt")
+os.rename("f_副本.txt","f.txt")
+
+
+
+读取规则文件
+f=open("g.txt",mode="r",encoding="utf-8")
+head_str=f.readline()   读取头部一行
+head_list=head_str.split()   切割表头
+for line in f:
+		line=line.strip()    去除两端空白
+		data_list=line.split()   切割
+		dic={}
+		for i in range(len(head_list)):    //拿到索引
+				dic[head_list[i]]=data_list[i]
+		lst.append(dic)
+
+		f.close 
+
+
+函数：
+定义
+def fun_name():
+		body
+调用函数
+fun（）
+
+
+返回值
+def fun()
+		body
+		return a       没写return 会返回none
+
+调用：
+b=fun()         b=a
+
+
+动态传参
+*：动态传参接收位置参数       会自动打包成元组
+def chi（*food）
+		print（food）
+chi("a")                结果：（'a')
+chi("a","b")	  						   ('a','b')
+chi("a","b","c")              ('a','b','c')
+
+**：动态接收关键字参数
+def chi(**food);
+		print(food)
+chi(main_food="面条",fu_food="土豆")         必须要有关键字
+
+
+python函数定义时，在给参数赋默认值，没有默认值的放在左侧
+
+def fun(a,*args,c=" 呵呵")：
+		print（a，args，c）
+
+正确顺序：位置参数 *args 默认值参数 **kwargs
+
+
+global  当前func函数内部使用的局部参数变为全局函数
+ 
